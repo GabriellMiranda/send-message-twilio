@@ -1,6 +1,7 @@
 from PIL import Image
 from twilio.rest import Client
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 

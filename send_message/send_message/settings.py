@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'send_sticker.urls'
+ROOT_URLCONF = 'send_message.urls'
 
 # settings.py
 TEMPLATES = [
@@ -77,7 +77,7 @@ TEMPLATES = [
 
 
 
-WSGI_APPLICATION = 'send_sticker.wsgi.application'
+WSGI_APPLICATION = 'send_message.wsgi.application'
 
 
 # Database
