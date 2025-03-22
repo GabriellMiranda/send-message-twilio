@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucesso!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            font-size: 3em;
+            text-align: center;
+            color: #f7d800;
+            text-shadow: 2px 2px 10px rgba(255, 165, 0, 0.8);
+            margin-bottom: 30px;
+            z-index: 10;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #f7d800;
+            border: none;
+            border-radius: 5px;
+            color: #2b2b2b;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .button:hover {
+            background-color: #ffcc00;
+        }
+
+        /* Fireworks */
+        .fireworks-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .firework {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 165, 0, 0.8);
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1) translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3) translate(200px, 200px);
+                opacity: 0;
+            }
+        }
+
+        /* Additional Firework Colors */
+        .firework-1 {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+
+        .firework-2 {
+            background-color: rgba(0, 255, 0, 0.8);
+        }
+
+        .firework-3 {
+            background-color: rgba(0, 0, 255, 0.8);
+        }
+
+        /* Animation for explosion */
+        @keyframes burst {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload feito com sucesso!</h2>
+    <button class="button" onclick="window.location.href='/'">Voltar à página inicial</button>
+
+    <!-- Fireworks container -->
+    <div class="fireworks-container" id="fireworks-container"></div>
+
+    <script>
+        // Function to generate fireworks
+        function generateFireworks() {
+            const container = document.getElementById('fireworks-container');
+            const numFireworks = 10; // Number of fireworks to show
+            const colors = ['firework-1', 'firework-2', 'firework-3']; // Firework colors
+
+            for (let i = 0; i < numFireworks; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework', colors[Math.floor(Math.random() * colors.length)]);
+
+                // Random position for the firework
+                firework.style.left = `${Math.random() * 100}vw`;
+                firework.style.top = `${Math.random() * 100}vh`;
+
+                // Random delay for the firework explosion
+                firework.style.animationDelay = `${Math.random() * 2}s`;
+
+                container.appendChild(firework);
+
+                // Remove the firework after animation
+                firework.addEventListener('animationend', () => {
+                    container.removeChild(firework);
+                });
+            }
+        }
+
+        // Call the function to generate fireworks when the page loads
+        window.onload = function() {
+            generateFireworks();
+        };
+    </script>
+</body>
+</html>

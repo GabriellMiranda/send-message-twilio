@@ -1,0 +1,5 @@
+from django import forms
+
+class MessageForm(forms.Form):
+    message = forms.CharField(max_length=160, widget=forms.Textarea)
+    whatsapp_number = forms.CharField(max_length=15)
