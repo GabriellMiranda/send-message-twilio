@@ -23,4 +23,4 @@ Antes de rodar o projeto, verifique se você possui os seguintes pré-requisitos
 
 2. **Execução**
   ```bash
-  python manage.py runserver
+  python manage.py runserver. 
